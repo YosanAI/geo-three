@@ -1664,8 +1664,9 @@ class GoogleMapsProvider extends MapProvider {
         this.sessionToken = null;
         this.orientation = 0;
         this.format = 'png';
-        this.mapType = 'roadmap';
+        this.mapType = 'satellite';
         this.overlay = false;
+        this.highDPI = true;
         this.apiToken = apiToken !== undefined ? apiToken : '';
         this.createSession();
     }
@@ -1677,9 +1678,11 @@ class GoogleMapsProvider extends MapProvider {
             region: 'en',
             layerTypes: ['layerRoadmap', 'layerStreetview'],
             overlay: this.overlay,
-            scale: 'scaleFactor1x'
+            scale: 'scaleFactor4x',
+            highDpi: this.highDPI
         });
         XHRUtils.request(address, 'POST', { 'Content-Type': 'text/json' }, data, (response, xhr) => {
+            console.log("response from google maps create session: ", response);
             this.sessionToken = response.session;
         }, function (xhr) {
             throw new Error('Unable to create a google maps session.');
