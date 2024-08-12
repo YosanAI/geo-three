@@ -46,12 +46,18 @@ export class GoogleMapsProvider extends MapProvider
 	 *  - terrain: Shaded relief maps of 3D terrain. When selecting terrain as the map type, you must also include the layerRoadmap layer type (described in the Optional fields section below).
 	 *  - streetview: Street View panoramas. See the Street View guide.
 	 */
-	public mapType: string = 'roadmap';
+	public mapType: string = 'satellite';
 
 	/**
 	 * If true overlays are shown.
 	 */
 	public overlay: boolean = false;
+
+	/**
+	 * If true high resolution images are requested. has no effct if scale is set to scaleFactor1x.
+	 */
+
+	public highDPI: boolean = true;
 
 	public constructor(apiToken: string) 
 	{
@@ -76,7 +82,8 @@ export class GoogleMapsProvider extends MapProvider
 			region: 'en',
 			layerTypes: ['layerRoadmap', 'layerStreetview'],
 			overlay: this.overlay,
-			scale: 'scaleFactor1x'
+			scale: 'scaleFactor4x',
+            highDpi: this.highDPI
 		});
 
 		XHRUtils.request(address, 'POST', {'Content-Type': 'text/json'}, data, (response, xhr) =>
