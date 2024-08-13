@@ -57,7 +57,7 @@ export class GoogleMapsProvider extends MapProvider
 	 * If true high resolution images are requested. has no effct if scale is set to scaleFactor1x.
 	 */
 
-	public highDPI: boolean = true;
+	public highDPI: boolean = false;
 
 	public constructor(apiToken: string) 
 	{
@@ -82,7 +82,7 @@ export class GoogleMapsProvider extends MapProvider
 			region: 'en',
 			//layerTypes: ['layerRoadmap', 'layerStreetview'],
 			overlay: this.overlay,
-			scale: 'scaleFactor4x',
+			scale: 'scaleFactor1x',
             highDpi: this.highDPI
 		});
 
