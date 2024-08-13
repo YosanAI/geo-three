@@ -1666,7 +1666,7 @@ class GoogleMapsProvider extends MapProvider {
         this.format = 'png';
         this.mapType = 'satellite';
         this.overlay = false;
-        this.highDPI = false;
+        this.highDPI = true;
         this.apiToken = apiToken !== undefined ? apiToken : '';
         this.createSession();
     }
@@ -1677,7 +1677,7 @@ class GoogleMapsProvider extends MapProvider {
             language: 'en-EN',
             region: 'en',
             overlay: this.overlay,
-            scale: 'scaleFactor1x',
+            scale: 'scaleFactor4x',
             highDpi: this.highDPI
         });
         XHRUtils.request(address, 'POST', { 'Content-Type': 'text/json' }, data, (response, xhr) => {
