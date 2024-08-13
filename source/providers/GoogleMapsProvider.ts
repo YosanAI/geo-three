@@ -80,7 +80,7 @@ export class GoogleMapsProvider extends MapProvider
 			mapType: this.mapType,
 			language: 'en-EN',
 			region: 'en',
-			layerTypes: ['layerRoadmap', 'layerStreetview'],
+			//layerTypes: ['layerRoadmap', 'layerStreetview'],
 			overlay: this.overlay,
 			scale: 'scaleFactor4x',
             highDpi: this.highDPI
